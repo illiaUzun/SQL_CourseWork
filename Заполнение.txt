@@ -1,0 +1,385 @@
+ALTER  SEQUENCE s_Student RESTART WITH 1;
+ALTER  SEQUENCE s_Professor RESTART WITH 1; 
+ALTER  SEQUENCE s_StudCourse RESTART WITH 1; 
+ALTER  SEQUENCE s_Journal RESTART WITH 1;
+ALTER  SEQUENCE s_Application RESTART WITH 1;
+ALTER  SEQUENCE s_Group RESTART WITH 1;
+ALTER  SEQUENCE s_Form RESTART WITH 1;
+ALTER  SEQUENCE s_Certificate RESTART WITH 1;
+ALTER  SEQUENCE s_ExamType RESTART WITH 1;
+ALTER  SEQUENCE s_Instructor RESTART WITH 1;
+
+--Преподаватели
+INSERT INTO	"Преподаватель"  
+VALUES (NEXTVAL ( 's_Professor' ), 'Бутко', 'Клаус', 'Ярославович', 'B', true, 10000, 'ул. Барвихинская, 53', 'Инженер-механик');
+
+INSERT INTO	"Преподаватель"  
+VALUES (NEXTVAL ( 's_Professor' ), 'Ильин', 'Панкратий', 'Данилович', 'A', false, 8000, 'ул. Батайская, 48', 'Инженер-механик');
+
+INSERT INTO	"Преподаватель"  
+VALUES (NEXTVAL ( 's_Professor' ), 'Андреев', 'Болеслав', 'Геннадьевич', 'B', true, 11000, 'ул. Деревцова, 25', 'Инженер-механик');
+
+INSERT INTO	"Преподаватель"  
+VALUES (NEXTVAL ( 's_Professor' ), 'Михайлов', 'Авдей', 'Тарасович', 'B', true, 10500, 'ул. Беговая 2-я, 85', 'Инженер-механик');
+
+INSERT INTO	"Преподаватель"  
+VALUES (NEXTVAL ( 's_Professor' ), 'Воронин', 'Анатолий', 'Григорьевич', 'С', false, 13000, 'ул. Дачная, 30', 'Инженер-механик');
+
+--Курсы
+INSERT INTO	"Курс_обучения" 
+VALUES (NEXTVAL ( 's_StudCourse' ), 'A', 4000, 2);
+
+INSERT INTO	"Курс_обучения" 
+VALUES (NEXTVAL ( 's_StudCourse' ), 'В', 7000, 3);
+
+INSERT INTO	"Курс_обучения" 
+VALUES (NEXTVAL ( 's_StudCourse' ), 'C', 10000, 4);
+
+
+--Группы
+INSERT INTO	"Группа" 
+VALUES (NEXTVAL ( 's_Group' ), 111, 6, 2, '2018-11-25', 'Пн,Вт. 18:00', 1);
+
+INSERT INTO	"Группа" 
+VALUES (NEXTVAL ( 's_Group' ), 112, 3, 1, '2017-12-01', 'Пн,Ср,Чт. 19:15', 2);
+
+INSERT INTO	"Группа" 
+VALUES (NEXTVAL ( 's_Group' ), 113, 4, 2, '2018-12-12', 'Сб,Вс. 11:00', 3);
+
+INSERT INTO	"Группа" 
+VALUES (NEXTVAL ( 's_Group' ), 114, 5, 2, '2016-10-25', 'Пн,Вт. 18:00', 4);
+
+INSERT INTO	"Группа" 
+VALUES (NEXTVAL ( 's_Group' ), 115, 8, 3, '2018-11-22', 'Вт, Пт. 15:30', 5);
+
+--Студенты
+--гр1
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Прохоров', 'Мирослав', 'Грегориевич', '2000-05-01', 'ул. Вагонников, 69', 'Студент МГУ им.Ломоносова');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 1, 0, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Многогрешный ', 'Лев', 'Дмитриевич', '2001-04-05', 'ул. Зелёная, 2', 'Студент КНПУ');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 2, 1, 'Не уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Баранов ', 'Аркадий', 'Юхимович', '1999-11-23', ' ул. Адмирала Лазарева, 83', 'Программист в Luxoft');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 3, 5, 'Не уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Громов', 'Зуфар', 'Сергеевич', '2000-03-10', 'ул. Авиационная, 51', 'Студент ОНПУ');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 4, 2, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Павлик', 'Иммануил', 'Станиславович', '2002-09-03', 'ул. Авиамоторная улица, 30', 'Студент ОНУ');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 5, 0, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Гелетей', 'Юлий', 'Вадимович', '2000-12-30', 'ул. Голландская, 40', 'Кассир в McDonalds');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 1, 6, 3, 'Уплачено частично');
+
+--гр 2
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Чикольба', 'Никита', 'Виталиевич', '1987-01-01', 'ул. Багрицкого, 30', 'Финансовый менеджер');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 2, 7, 5, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Дубченко', 'Марк', 'Грегориевич', '1990-05-08', 'ул. Авиаконструктора Миля, 60', 'Студент ОНУ');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 2, 8, 3, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Пархоменко', 'Милан', 'Максимович', '1994-12-21', 'ул. Журавлёва, 70', 'Оператор call-центра');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 2, 9, 0, 'Уплачено частично');
+
+--гр3
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Суворов', 'Клим', 'Львович', '1991-11-24', 'ул. Бассейная, 56', 'Слесарь-ремонтник');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 3, 10, 1, 'Не уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Дорофеев', 'Аким', 'Ярославович', '2003-06-04', 'ул. Пушкина, 65', 'Студент ОНМУ');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 3, 11, 7, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Новиков', 'Ростислав', 'Данилович', '1985-10-23', 'ул. Авангардная, 37', 'Пекарь');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 3, 12, 2, 'Не плачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Белов', 'Орест', 'Иванович', '1999-08-15', ' ул. Михаила Агибалова, 77', 'Студент ОНМА');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 3, 13, 8, 'Уплачено');
+
+--гр4
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Гелетей', 'Доминик', 'Платонович', '1984-02-13', 'ул. Бардина, 27', 'Продавец-консультант в Citrus');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 4, 14, 10, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Новиков', 'Стефан', 'Вадимович', '1992-05-12', ' ул. Глинки, 55', 'Менеджер по продажам Таврия В');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 4, 15, 1, 'Уплачено частично');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Зыков', 'Леонард', 'Викторович', '1988-07-07', 'ул. Автомоторная, 21', 'Переводчик английского языка в Lingva');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 4, 16, 4, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Фролов', 'Остин', 'Владимирович', '1969-01-06', 'ул. Академическая, 8', 'Преподаватель немецкого языка в Lingva');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 4, 17, 6, 'Уплачено частично');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Несвитайло', 'Заур', 'Иванович', '1975-04-16', 'ул. Дачная, 24', 'Экскаваторщик');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 4, 18, 2, 'Не уплачено');
+
+--гр5
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Исаков', 'Гавриил', 'Евгеньевич', '1974-12-25', 'ул. Баррикадная, 47', 'Оператор 1С интернет-магазина');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 19, 3, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Марков', 'Никита', 'Виталиевич', '1979-01-03', ' ул. Лидии Базановой, 6', 'Бухгалтер в Eskaro Colour');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 20, 7, 'Уплачено частично');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Фёдоров', 'Жигер', 'Петрович', '1987-09-25', 'ул. Беговая, 55', 'Рекрутер в Binixo');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 21, 3, 'Уплачено частично');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Виноградов', 'Дан', 'Сергеевич', '1973-08-02', 'ул. Батюнинская, 75', 'Продавец в Сільпо');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 22, 1, 'Уплачено частично');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Матвеев', 'Игнатий', 'Артёмович', '1982-06-14', 'ул. Бардина, 87', 'Менеджер по продажам в Новом агентстве');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 23, 0, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Кириленко', 'Емельян', 'Грегориевич', '1974-12-01', 'ул. Бакунина, 12', 'Управляющий магазином Кактус');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 24, 4, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Архипов', 'Добрыня', 'Львович', '1976-02-02', 'ул. Дарвина, 83', 'Медицинский представитель в Берлин-Хеми');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 25, 7, 'Уплачено');
+
+INSERT INTO	"Анкета_студента" 
+VALUES (NEXTVAL ( 's_Form' ), 'Линник ', 'Ефим', 'Романович', '1989-05-27', 'ул. Барышиха, 66', 'Слесарь в Укроргсинтезе');
+INSERT INTO	"Студент" 
+VALUES (NEXTVAL ( 's_Student' ), 5, 26, 3, 'Не уплачено ');
+
+
+
+--Заявки в автошколу
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 1, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 2, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 3, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 4, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 5, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 6, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 7, 'А');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 8, 'А');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 9, 'А');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 10, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 11, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 12, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 13, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 14, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 15, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 16, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 17, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 18, 'B');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 19, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 20, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 21, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 22, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 23, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 24, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 25, 'С');
+
+INSERT INTO	"Заявка_в_автошколу" 
+VALUES (NEXTVAL ( 's_Application' ), 26, 'С');
+
+--Инструктора
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Кудрявцев', 'Роман', 'Русланович', 15, 47,'A', 8000);
+
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Леонтьев', 'Филипп', 'Эдуардович', 5, 85, 'B', 10000);
+
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Куколевский', 'Сократ', 'Федорович', 23, 52, 'C', 9000);
+
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Борисов', 'Тарас', 'Константинович', 16, 34,'A', 8500);
+
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Охота', 'Юрий', 'Александрович', 9, 65, 'B', 9600);
+
+INSERT INTO	"Инструктор"  
+VALUES (NEXTVAL ( 's_Instructor' ), 'Белозёров', 'Валентин', 'Александрович', 26, 32, 'C', 9500);
+
+--Тип_экзамена
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Практика категории А', '30-бальная система', 1250);
+
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Практика категории B', '30-бальная система', 1250);
+
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Практика категории С', '30-бальная система', 1250);
+
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Теория категории А', '100-бальная система', 0);
+
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Теория категории B', '100-бальная система', 0);
+
+INSERT INTO	"Тип_экзамена" 
+VALUES (NEXTVAL ( 's_ExamType' ), 'Теория категории C', '100-бальная система', 0);
+
+--Записи в журнале
+--гр2
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 7, 1, '2018-03-01', 25, 1);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 7, 4, '2018-03-02', 97, 4);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 8, 1, '2018-03-02', 12, 1);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 8, 4, '2018-03-01', 50, 4);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 9, 1, '2018-03-03', 29, 1);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 9, 4, '2018-03-03', 65, 4);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 10, 1, '2018-03-04', 10, 1);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 10, 4, '2018-03-07', 80, 4);
+
+--гр4
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 14, 2, '2017-01-25', 26, 2);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 14, 5, '2017-01-26', 53, 5);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 15, 2, '2017-01-27', 23, 2);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 15, 5, '2017-01-28', 73, 5);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 16, 2, '2017-01-27', 5, 2);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 16, 5, '2017-01-28', 33, 5);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 17, 2, '2017-01-25', 19, 2);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 17, 5, '2017-01-26', 76, 5);
+
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 18, 2, '2017-01-28', 29, 2);
+INSERT INTO	"Журнал" 
+VALUES (NEXTVAL ( 's_Journal' ), 18, 5, '2017-01-29', 69, 5);
+
+--свидетельва об окончании
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 1, 7, 1);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 1, 8, 3);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 1, 9, 5);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 1, 10, 7);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 2, 14, 9);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 2, 15, 11);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 2, 16, 13);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 2, 17, 15);
+
+INSERT INTO	"Свидетельво_об_окончании" 
+VALUES (NEXTVAL ( 's_Certificate' ), 2, 18, 17);
+

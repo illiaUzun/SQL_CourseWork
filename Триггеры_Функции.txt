@@ -1,0 +1,117 @@
+CREATE OR REPLACE VIEW  public.graduates AS
+SELECT
+FROM "Студент" S, ""
+
+
+
+--Тригер удаляет Анкету студента при удалении студента
+--и уменьшает колличество студентов в группе на 1
+	
+
+
+CREATE OR REPLACE FUNCTION DeleteStudent() RETURNS TRIGGER
+	AS $$	BEGIN
+			DELETE FROM "Заявка_в_автошколу" ank WHERE ank."id_заявки" = old."id_студента";
+			DELETE FROM "Анкета_студента" ank WHERE ank."id_анкеты" = old."id_студента";
+			UPDATE "Группа" SET "Количество_учащихся" = "Количество_учащихся" - 1 WHERE "id_группы" = old."Группа";
+			ALTER  SEQUENCE s_Instructor INCREMENT BY -1;
+			RETURN old;
+	END; $$
+LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER DelStud
+	AFTER DELETE ON "Ст);
+	RETURN new;
+	END; $$
+LANGUAGE 'plpgsql';
+
+INSERT INTO "Заявка_в_автошколу" VALUES (NEXTVAL ( 's_Application' ), 25, 'В');удент"
+	FOR EACH ROW EXECUTE PROCEDURE DeleteStudent();
+
+--Тригер судя по заявке в автошколу добавляет студента в группу с 
+--нужной категорией и найименьшим количеством студентов  
+--и удаляет картеж из таблицы заявок
+--(если нужной категории нет - не добавляет) и увеличивает 
+--количество людей в группе на 1
+
+CREATE OR REPLACE FUNCTION AddStudent()	RETURNS TRIGGER
+	AS $$ 	BEGIN
+			INSERT INTO "Студент" VALUES (NEXTVAL ( 's_Student' ), (SELECT "id_группы" FROM "Группа" 
+											WHERE "Количество_учащихся" = (SELECT MIN("Количество_учащихся") FROM "Группа" 
+												WHERE "Курс" = (SELECT "id_курса" FROM "Курс_обучения"
+													WHERE  "Категория_курса" = new."Необходимая_категория"))), new."Анкета",  0, 'Не уплачено');
+			UPDATE "Группа" SET "Количество_учащихся" = "Количество_учащихся" + 1 WHERE "id_группы" = (SELECT "id_группы" FROM "Группа" 
+											WHERE "Количество_учащихся" = (SELECT MIN("Количество_учащихся") FROM "Группа" 
+												WHERE "Курс" = (SELECT "id_курса" FROM "Курс_обучения"
+													WHERE  "Категория_курса" = "Необходимая_категори")));
+	RETURN new;
+	END; $$
+LANGUAGE 'plpgsql';
+
+
+CREATE TRIGGER AddStud
+	AFTER INSERT ON "Заявка_в_автошколу"
+	FOR EACH ROW EXECUTE PROCEDURE AddStud();
+
+
+--Тригер судя по набранным баллам в журнале автоматически 
+--формирует свидетельства об окончании
+
+CREATE OR REPLACE FUNCTION AddCertificate()	RETURNS TRIGGER
+	AS $$ 	BEGIN
+			IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Теория%' AND "Набранный_балл" > 60) THEN
+				INSERT INTO	"Свидетельство_об окончании" VALUES (NEXTVAL ( 's_Certificate' ), SELECT 
+			ELSE IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Практика%' AND "Набранный_балл" > 30) THEN
+				INSERT INTO	"Свидетельство_об окончании" VALUES (NEXTVAL ( 's_Certificate' ), SELECT "id_курса" FROM "Курс_обучения" WHERE EXISTS 
+																																			(SELECT "Курс" FROM "Группа" 
+																																				WHERE EXISTS 
+																																				(SELECT "Группа" FROM "Студент" WHERE "id_студента" = "Студент")
+																																			), "Студент", "Набранный_балл" );
+			ELSE 
+				RAISE EXCEPTION 'Студент не сдал экзамен :('
+			END IF;
+	END $$
+LANGUAGE 'plpgsql'
+
+CREATE TRIGGER AddStud
+	AFTER INSERT ON "Журнал"
+	FOR EACH ROW EXECUTE PROCEDURE AddStud();
+	
+
+--Тригер проверяет на правильность введенных в журнал оценок 
+--(не больше 100 и не больше 50)
+CREATE OR REPLACE FUNCTION AddCertificate()	RETURNS TRIGGER
+	AS $$ 	BEGIN
+			IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Теория%' AND "Набранный_балл" > 100) THEN
+				RAISE EXCEPTION 'Ошибка! Балл за теорию не может быть больше > 100.'
+			ELSE IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Практика%' AND "Набранный_балл" > 50) THEN
+				RAISE EXCEPTION 'Ошибка! Балл за практику не может быть больше > 50.'
+			ELSE 
+				RETURN new;
+			END IF;
+	END $$
+LANGUAGE 'plpgsql'
+
+CREATE TRIGGER AddStud
+	AFTER INSERT ON "Журнал"
+	FOR EACH ROW EXECUTE PROCEDURE AddStud();
+
+--Тригер проверяет, проверяет, чтобы состояние оплаты было "Уплачено", 
+--если прошло половина курса
+CREATE OR REPLACE FUNCTION AddCertificate()	RETURNS TRIGGER
+	AS $$ 	BEGIN
+			IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Теория%' AND "Набранный_балл" > 100) THEN
+				RAISE EXCEPTION 'Ошибка! Балл за теорию не может быть больше > 100.'
+			ELSE IF (SELECT "Категория_экзамена" FROM "Тип_Экзамена" WHERE "Категория_экзамена" LIKE '%Практика%' AND "Набранный_балл" > 50) THEN
+				RAISE EXCEPTION 'Ошибка! Балл за практику не может быть больше > 50.'
+			ELSE 
+				RETURN new;
+			END IF;
+	END $$
+LANGUAGE 'plpgsql'
+
+CREATE TRIGGER AddStud
+	AFTER INSERT ON "Журнал"
+	FOR EACH ROW EXECUTE PROCEDURE AddStud();
+
